@@ -362,6 +362,7 @@ int mapBiome                (const Layer *, int *, int, int, int, int);
 int mapBiomeBE              (const Layer *, int *, int, int, int, int);
 int mapAddBamboo            (const Layer *, int *, int, int, int, int);
 int mapRiverInit            (const Layer *, int *, int, int, int, int);
+int mapRiverInit12(const Layer * l, int * out, int x, int z, int w, int h)
 int mapBiomeEdge            (const Layer *, int *, int, int, int, int);
 int mapHills                (const Layer *, int *, int, int, int, int);
 int mapRiver                (const Layer *, int *, int, int, int, int);

@@ -128,7 +128,10 @@ static void setupGeneratorImpl(LayerStack *g, int mcversion, int largeBiomes)
     setupLayer(&l[L_BIOME_EDGE_64],       &l[L_ZOOM_64],              1000, mapBiomeEdge);
 
     // basic river layer chain, used to determine where hills generate
-    setupLayer(&l[L_RIVER_INIT_256],      &l[L_DEEP_OCEAN_256],       100,  mapRiverInit);
+    if (mcversion <= MC_1_13)
+        setupLayer(&l[L_RIVER_INIT_256],      &l[L_DEEP_OCEAN_256],       100,  mapRiverInit12);
+    else
+        setupLayer(&l[L_RIVER_INIT_256],      &l[L_DEEP_OCEAN_256],       100,  mapRiverInit);
     setupLayer(&l[L_ZOOM_128_HILLS],      &l[L_RIVER_INIT_256],       1000, mapZoom);
     setupLayer(&l[L_ZOOM_64_HILLS],       &l[L_ZOOM_128_HILLS],       1001, mapZoom);
 

@@ -877,6 +877,35 @@ int mapBiomeBE(const Layer * l, int * out, int x, int z, int w, int h)
 }
 
 
+int mapRiverInit12(const Layer * l, int * out, int x, int z, int w, int h)
+{
+    int err = l->p->getMap(l->p, out, x, z, w, h);
+    if U(err != 0)
+        return err;
+
+    int64_t ss = 0;
+    int64_t cs;
+
+    int i, j;
+    for (j = 0; j < h; j++)
+    {
+        for (i = 0; i < w; i++)
+        {
+            if (out[i + j*w] > 0)
+            {
+                cs = getChunkSeed(ss, i + x, j + z);
+                out[i + j*w] = mcFirstInt(cs, 299999)+2;
+            }
+            else
+            {
+                out[i + j*w] = 0;
+            }
+        }
+    }
+
+    return 0;
+}
+
 int mapRiverInit(const Layer * l, int * out, int x, int z, int w, int h)
 {
     int err = l->p->getMap(l->p, out, x, z, w, h);
